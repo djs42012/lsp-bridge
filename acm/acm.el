@@ -197,14 +197,15 @@
      (setq ,timer
            (run-with-idle-timer ,idle t #'(lambda () (funcall ,func))))))
 
+;; make this evil friendly
 (defvar acm-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map [remap next-line] #'acm-select-next)
     (define-key map [remap previous-line] #'acm-select-prev)
     (define-key map [down] #'acm-select-next)
     (define-key map [up] #'acm-select-prev)
-    (define-key map "\M-n" #'acm-select-next)
-    (define-key map "\M-p" #'acm-select-prev)
+    (define-key map "\C-j" #'acm-select-next)
+    (define-key map "\C-k" #'acm-select-prev)
     (define-key map "\M-," #'acm-select-last)
     (define-key map "\M-." #'acm-select-first)
     (define-key map "\C-v" #'acm-select-next-page)
@@ -217,8 +218,8 @@
     (define-key map "\M-H" #'acm-insert-common)
     (define-key map "\M-u" #'acm-filter)
     (define-key map "\M-d" #'acm-doc-toggle)
-    (define-key map "\M-j" #'acm-doc-scroll-up)
-    (define-key map "\M-k" #'acm-doc-scroll-down)
+    (define-key map "\C-S-k" #'acm-doc-scroll-up)
+    (define-key map "\C-S-j" #'acm-doc-scroll-down)
     (define-key map "\M-l" #'acm-hide)
     (define-key map "\C-g" #'acm-hide)
     (define-key map "1" #'acm-insert-number-or-complete-candiate)
